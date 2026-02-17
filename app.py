@@ -29,17 +29,21 @@ def add():
     
 @app.route("/done/<item_id>")
 def done(item_id):
+    print("Clicked ID:", item_id)
+
     for item in todo_list.items:
+        print("Item ID:", item.identifier)
         if item.identifier == item_id:
             item.done = True
             break
+
     todo_list.save()
     return redirect(url_for("home"))
 
 
 
 
-@app.route("/edit/<int:item_id>", methods=['POST', 'GET'])
+@app.route("/edit/<item_id>", methods=['POST', 'GET'])
 def edit(item_id):
     items = None
     for item in todo_list.items:
