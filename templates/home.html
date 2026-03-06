@@ -25,21 +25,23 @@
 
         <ul class="todo-list">
             {% for item in todos %}
+            {% if not item.done %}
 
             <h4>created: {{ item.created }}</h4>
             <li class="todo-list_list">
                 {{ item.note }} - Priority: {{ item.priority }} - Due: {{ item.due }}
 
 
-                {% if not item.done %}
+         
                 <a href="{{ url_for('done', item_id=item.identifier) }}">
                     <button class="done">Done</button>
                 </a>
-                {% endif %}
+
 
 
                 <a class="edit-link" href="{{ url_for('edit', item_id=item.identifier) }}">Edit</a>
             </li>
+            {% endif %}
             {% endfor %}
         </ul>
     </div>

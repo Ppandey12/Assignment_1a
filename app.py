@@ -33,11 +33,11 @@ def done(item_id):
 
     for item in todo_list.items:
         print("Item ID:", item.identifier)
-        if item.identifier == item_id:
+        if str(item.identifier) == str(item_id):
             item.done = True
             break
 
-    todo_list.save()
+    # todo_list.save()
     return redirect(url_for("home"))
 
 
@@ -47,7 +47,7 @@ def done(item_id):
 def edit(item_id):
     items = None
     for item in todo_list.items:
-        if item.identifier == item_id:
+        if str(item.identifier) == str(item_id):
             items = item
             break
 
